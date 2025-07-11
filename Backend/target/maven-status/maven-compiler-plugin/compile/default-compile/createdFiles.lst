@@ -1,0 +1,13 @@
+com\example\resumeanalyzer\controller\ResumeController.class
+com\example\resumeanalyzer\repository\ResumeRepository.class
+com\example\resumeanalyzer\service\ResumeService.class
+com\example\resumeanalyzer\controller\UserController.class
+com\example\resumeanalyzer\ResumeAnalyzerApplication.class
+com\example\resumeanalyzer\model\User.class
+com\example\resumeanalyzer\repository\UserRepository.class
+com\example\resumeanalyzer\model\JobDescription.class
+com\example\resumeanalyzer\service\JobDescriptionService.class
+com\example\resumeanalyzer\model\Resume.class
+com\example\resumeanalyzer\controller\JobDescriptionController.class
+com\example\resumeanalyzer\repository\JobDescriptionRepository.class
+com\example\resumeanalyzer\service\UserService.class
