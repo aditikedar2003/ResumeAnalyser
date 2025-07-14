@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume Analyzer - Job Seeker</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>Upload Resume & Job Description</h2>
+
+    <!-- ✅ Connected to live backend -->
+    <form action="https://resumeanalyser-plbv.onrender.com/api/resume/analyze" method="post" enctype="multipart/form-data">
+      <input type="file" name="resume" accept=".pdf" required />
+      <textarea name="jobDescription" placeholder="Paste Job Description here..." rows="6" required></textarea>
+      <button type="submit">Analyze</button>
+    </form>
+
+    <p><a href="index.html">Back to Home</a></p>
+  </div>
+</body>
+</html>

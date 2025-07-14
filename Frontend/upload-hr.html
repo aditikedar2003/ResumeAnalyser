@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume Analyzer - HR Upload</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>HR - Upload Bulk Resumes & Job Role</h2>
+
+    <!-- ✅ Connected to live backend -->
+    <form action="https://resumeanalyser-plbv.onrender.com/api/resume/hr/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="resumes" accept=".zip,.pdf" multiple required />
+      <textarea name="jobRole" placeholder="Enter Job Role or Description..." rows="6" required></textarea>
+      <button type="submit">Upload & Analyze</button>
+    </form>
+
+    <p><a href="index.html">Back to Home</a></p>
+  </div>
+</body>
+</html>
