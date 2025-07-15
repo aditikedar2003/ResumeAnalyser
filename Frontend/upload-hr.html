@@ -2,21 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Resume Analyzer - HR Upload</title>
+  <title>Upload JD</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <div class="login-container">
-    <h2>HR - Upload Bulk Resumes & Job Role</h2>
-
-    <!-- ✅ Connected to live backend -->
-    <form action="https://resumeanalyser-plbv.onrender.com/api/resume/hr/upload" method="post" enctype="multipart/form-data">
-      <input type="file" name="resumes" accept=".zip,.pdf" multiple required />
-      <textarea name="jobRole" placeholder="Enter Job Role or Description..." rows="6" required></textarea>
-      <button type="submit">Upload & Analyze</button>
+  <div class="upload-container">
+    <h2>Upload Job Description</h2>
+    <form id="jdForm">
+      <input type="text" id="title" placeholder="Job Title" required />
+      <textarea id="content" placeholder="Enter JD content here..." rows="8" required></textarea>
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button type="submit">Submit JD</button>
     </form>
-
-    <p><a href="index.html">Back to Home</a></p>
   </div>
+
+  <script>
+    document.getElementById("jdForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const title = document.getElementById("title").value;
+      const content = document.getElementById("content").value;
+      const email = document.getElementById("email").value;
+
+      fetch("https://resumeanalyser-plbv.onrender.com/api/jd/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, content, email })
+      })
+        .then(response => {
+          if (!response.ok) throw new Error("JD upload failed");
+          return response.text();
+        })
+        .then(msg => {
+          alert("✅ Job Description uploaded!");
+        })
+        .catch(error => {
+          alert("⚠️ JD upload failed.");
+          console.error(error);
+        });
+    });
+  </script>
 </body>
 </html>

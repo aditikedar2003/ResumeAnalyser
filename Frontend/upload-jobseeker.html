@@ -2,21 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Resume Analyzer - Job Seeker</title>
+  <title>Upload Resume</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <div class="login-container">
-    <h2>Upload Resume & Job Description</h2>
-
-    <!-- ✅ Connected to live backend -->
-    <form action="https://resumeanalyser-plbv.onrender.com/api/resume/analyze" method="post" enctype="multipart/form-data">
-      <input type="file" name="resume" accept=".pdf" required />
-      <textarea name="jobDescription" placeholder="Paste Job Description here..." rows="6" required></textarea>
-      <button type="submit">Analyze</button>
+  <div class="upload-container">
+    <h2>Upload Resume</h2>
+    <form id="resumeForm" enctype="multipart/form-data">
+      <input type="file" id="resume" required />
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button type="submit">Upload</button>
     </form>
-
-    <p><a href="index.html">Back to Home</a></p>
   </div>
+
+  <script>
+    document.getElementById("resumeForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const fileInput = document.getElementById("resume").files[0];
+      const email = document.getElementById("email").value;
+
+      const formData = new FormData();
+      formData.append("file", fileInput);
+      formData.append("email", email);
+
+      fetch("https://resumeanalyser-plbv.onrender.com/api/resume/upload", {
+        method: "POST",
+        body: formData
+      })
+        .then(response => {
+          if (!response.ok) throw new Error("Upload failed");
+          return response.text();
+        })
+        .then(msg => {
+          alert("✅ Resume uploaded successfully!");
+        })
+        .catch(error => {
+          alert("⚠️ Upload failed.");
+          console.error(error);
+        });
+    });
+  </script>
 </body>
 </html>

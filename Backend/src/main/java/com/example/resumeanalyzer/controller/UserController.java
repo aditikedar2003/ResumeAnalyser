@@ -1,4 +1,5 @@
 package com.example.resumeanalyzer.controller;
+
 import com.example.resumeanalyzer.model.User;
 import com.example.resumeanalyzer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 @CrossOrigin(origins = "*")
 public class UserController {
-    @Autowired private UserService userService;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/register")
-    public User register(@RequestBody User user) {
+    public User register(@ModelAttribute User user) {
         return userService.registerUser(user);
     }
 
